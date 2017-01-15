@@ -1,0 +1,9 @@
+data;
+
+set MEDIA := day_television, prime_television, radio, magazines;
+
+param:           cost  min_needed max_wanted female_customers potential_customers :=
+day_television   40000 3          Infinity   300000           400000
+prime_television 75000 2          Infinity   400000           900000
+radio            30000 5          10         200000           500000
+magazines        15000 5          10         100000           200000;
