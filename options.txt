@@ -1,2 +1,2 @@
 # path on my personal machine to the solver
-option solver "/Users/claytonnorthey/Downloads/amplide.macosx64/minos";
+option solver "/Users/claytonnorthey/Downloads/amplide.macosx64/cplex";
