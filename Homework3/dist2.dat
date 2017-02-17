@@ -1,0 +1,28 @@
+set FACT = F1, F2;
+set CUST = C1, C2, C3;
+set PROD = bands, coils, plates;
+
+param supply: bands coils plates :=
+		   F1 250   200   275
+		   F2 100   625   50 ;
+
+param demand: bands coils plates :=
+		   C1 150   250   50
+		   C2 150   375   50
+		   C3 50    200   0 ;
+
+param limit default 525;
+
+param cost := 
+
+	[*,*,bands]: C1 C2 C3 :=
+			F1   40 10 12
+			F2   30 5  8 
+
+	[*,*,coils]: C1 C2 C3 :=
+			F1   40 10 12
+			F2   30 5  8 
+
+	[*,*,plates]: C1 C2 C3 :=
+			F1    40 10 12
+			F2    30 5  8  ;

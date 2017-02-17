@@ -1,0 +1,18 @@
+set DAYS := Mon Tue Wed Thu Fri Sat Sun ;
+
+set PLANS := SaSu SuMo MoTu TuWe WeTh ThFr FrSa Custom;
+
+param need :=  Mon 16  Tue 11   Wed 17   Thu 13
+
+               Fri 15   Sat 19   Sun 14 ;
+
+
+param sched: SaSu SuMo MoTu TuWe WeTh ThFr FrSa Custom:=
+        Mon    1    0    0    1    1    1    1  1 
+        Tue    1    1    0    0    1    1    1  0 
+        Wed    1    1    1    0    0    1    1  1 
+        Thu    1    1    1    1    0    0    1  1 
+        Fri    1    1    1    1    1    0    0  1 
+        Sat    0    1    1    1    1    1    0  1 
+        Sun    0    0    1    1    1    1    1  0 ;
+
