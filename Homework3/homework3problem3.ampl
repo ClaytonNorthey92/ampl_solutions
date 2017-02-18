@@ -1,6 +1,6 @@
 reset;
-model holes.mod;
-data holes.dat;
+model holes2.mod;
+data holes2.dat;
 
 option display_eps .000001;
 option omit_zero_rows 1;
