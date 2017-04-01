@@ -1,0 +1,152 @@
+printf "\n\n\n";
+
+reset;
+model steelP.mod;
+data steelP.dat;
+param original_total_cost;
+param cost_diff;
+
+printf "Verifying Solution:\n";
+solve;
+let original_total_cost := Total_Cost;
+printf "\n\n\n";
+
+printf "3.) a.) Decreasing demand['STL', 'plate'] by 70 tons.\n";
+let demand['STL', 'plate'] :=  demand['STL', 'plate'] - 70;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let demand['STL', 'plate'] := demand['STL', 'plate'] + 70;
+printf "\n\n\n";
+
+
+printf "3.) a.) Increasing demand['LAN', 'coils'] by 95 tons.\n";
+let demand['LAN', 'coils'] :=  demand['LAN', 'coils'] + 95;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let demand['LAN','coils'] := demand['LAN','coils'] - 95;
+printf "\n\n\n";
+
+
+printf "3.) b.) Increasing avail['PITT'] by 2.5 hours.\n";
+let avail['PITT'] :=  avail['PITT'] + 2.5;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let avail['PITT'] := avail['PITT'] - 2.5;
+printf "\n\n\n";
+
+
+printf "3.) b.) Decreasing avail['GARY'] by 4.5 hours.\n";
+let avail['GARY'] :=  avail['GARY'] - 4.5;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let avail['GARY'] := avail['GARY'] + 4.5;
+printf "\n\n\n";
+
+
+printf "3.) c.) Decreasing make_cost['GARY', 'coils'] by 12 dollars.\n";
+let make_cost['GARY','coils'] :=  make_cost['GARY', 'coils'] - 12;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let make_cost['GARY','coils'] := make_cost['GARY', 'coils'] + 12;
+printf "\n\n\n";
+
+
+printf "3.) c.) Increasing make_cost['CLEV', 'bands'] by 15 dollars.\n";
+let make_cost['CLEV','bands'] :=  make_cost['CLEV', 'bands'] + 15;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let make_cost['CLEV','bands'] := make_cost['CLEV', 'bands'] - 15;
+printf "\n\n\n";
+
+
+printf "3.) d.) Decreasing demand['DET', 'bands'] by 85 tons.\n";
+let demand['DET','bands'] :=  demand['DET', 'bands'] - 85;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let demand['DET','bands'] := demand['DET', 'bands'] + 85;
+printf "\n\n\n";
+
+
+printf "3.) d.) Decreasing make_cost['PITT', 'bands'] by 55*cost/tons.\n";
+let make_cost['PITT','bands'] :=  make_cost['PITT', 'bands'] - 55;
+solve;
+if original_total_cost > Total_Cost then {
+	let cost_diff := original_total_cost - Total_Cost;
+	printf "The minimum cost must decrease by at least %f\n", cost_diff;
+} else if original_total_cost < Total_Cost then {
+	let cost_diff := Total_Cost - original_total_cost;
+	printf "The minimum cost must increase by at most %f\n", cost_diff;
+} else {
+	printf "The minimum cost does not change.\n";
+}
+# reset original
+let make_cost['PITT','bands'] := make_cost['PITT', 'bands'] + 55;
+printf "\n\n\n";
+
+
+solve;
+display trans_cost['PITT', 'DET', 'coils'];
+display demand['DET', 'coils'], Make['PITT', 'coils'];
